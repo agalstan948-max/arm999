@@ -1,1 +1,718 @@
+.index/html
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NO MONEY WASTED — Premium Creative Marketing Agency</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        cosmic: {
+                            950: '#03050C',
+                            900: '#070A17',
+                            800: '#0E132D',
+                            700: '#171E45',
+                            accent: '#3B82F6',
+                            glow: '#60A5FA',
+                            purple: '#8B5CF6'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'Helvetica Neue', 'sans-serif'],
+                        display: ['Manrope', 'Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Custom Styles for Cosmic Glow and Editorial Look -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@300;400;600;700;800&display=swap');
+        
+        body {
+            background-color: #03050C;
+            color: #F8FAFC;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
 
+        .heading-font {
+            font-family: 'Manrope', sans-serif;
+            letter-spacing: -0.03em;
+        }
+
+        /* Custom starry background animation */
+        .stars-bg {
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 40px 70px, rgba(96,165,250,0.8), rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 90px 40px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 160px 120px, rgba(139,92,246,0.6), rgba(0,0,0,0));
+            background-repeat: repeat;
+            background-size: 200px 200px;
+            animation: starScroll 120s linear infinite;
+        }
+
+        @keyframes starScroll {
+            from { background-position: 0 0; }
+            to { background-position: -10000px 5000px; }
+        }
+
+        /* Glow effects */
+        .cosmic-glow {
+            box-shadow: 0 0 50px -10px rgba(59, 130, 246, 0.25);
+        }
+        
+        .card-glow:hover {
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.35);
+            border-color: rgba(96, 165, 250, 0.5);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #03050C;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #171E45;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3B82F6;
+        }
+    </style>
+</head>
+<body class="bg-cosmic-950 text-slate-100 selection:bg-blue-500 selection:text-white relative">
+
+    <div class="fixed inset-0 stars-bg pointer-events-none z-0 opacity-40"></div>
+    <div class="fixed top-[-20%] left-[-10%] w-[600px] h-[600px] rounded-full bg-blue-600/10 blur-[140px] pointer-events-none z-0"></div>
+    <div class="fixed bottom-[-20%] right-[-10%] w-[700px] h-[700px] rounded-full bg-purple-600/10 blur-[160px] pointer-events-none z-0"></div>
+
+    <header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-cosmic-950/75 border-b border-white/10 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#" class="font-bold tracking-tighter text-lg md:text-xl heading-font flex items-center gap-2">
+                <span class="inline-block w-2.5 h-2.5 rounded-full bg-blue-500 animate-pulse"></span>
+                NO MONEY WASTED<span class="text-blue-500">®</span>
+            </a>
+            
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300">
+                <a href="#home" class="hover:text-white transition-colors">Home</a>
+                <a href="#about" class="hover:text-white transition-colors">About</a>
+                <a href="#services" class="hover:text-white transition-colors">Services</a>
+                <a href="#projects" class="hover:text-white transition-colors">Projects</a>
+                <a href="#team" class="hover:text-white transition-colors">Team</a>
+                <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+            </nav>
+
+            <div class="flex items-center gap-4">
+                <a href="#contact" class="hidden sm:inline-flex items-center justify-center px-6 py-2.5 text-xs font-semibold uppercase tracking-wider rounded-full bg-white text-cosmic-950 hover:bg-blue-500 hover:text-white transition-all duration-300">
+                    LET’S TALK
+                </a>
+                <button id="mobile-menu-btn" class="md:hidden text-slate-300 hover:text-white focus:outline-none">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Drawer -->
+    <div id="mobile-menu" class="fixed inset-0 z-50 bg-cosmic-950/95 backdrop-blur-2xl flex flex-col justify-center px-10 transition-all duration-500 opacity-0 pointer-events-none md:hidden">
+        <button id="mobile-menu-close" class="absolute top-6 right-6 text-slate-400 hover:text-white">
+            <i data-lucide="x" class="w-8 h-8"></i>
+        </button>
+        <nav class="flex flex-col space-y-6 text-2xl font-semibold heading-font">
+            <a href="#home" class="mobile-link hover:text-blue-400 transition-colors">Home</a>
+            <a href="#about" class="mobile-link hover:text-blue-400 transition-colors">About</a>
+            <a href="#services" class="mobile-link hover:text-blue-400 transition-colors">Services</a>
+            <a href="#projects" class="mobile-link hover:text-blue-400 transition-colors">Projects</a>
+            <a href="#team" class="mobile-link hover:text-blue-400 transition-colors">Team</a>
+            <a href="#contact" class="mobile-link text-blue-400">Contact</a>
+        </nav>
+    </div>
+
+    <section id="home" class="relative pt-28 pb-16 md:pt-36 md:pb-24 px-4 sm:px-6 z-10">
+        <div class="max-w-7xl mx-auto">
+            
+            <!-- Hero Wrapper matching reference proportions -->
+            <div class="relative rounded-3xl overflow-hidden border border-white/10 bg-gradient-to-b from-cosmic-900/80 to-cosmic-950/90 cosmic-glow p-6 md:p-12 lg:p-16">
+                
+                <!-- Background visual inside hero card -->
+                <div class="absolute inset-0 z-0 overflow-hidden opacity-60">
+                    <div class="absolute right-[-10%] top-[-20%] w-[600px] h-[600px] rounded-full bg-gradient-to-br from-blue-600/30 via-indigo-900/20 to-transparent blur-3xl"></div>
+                    <div class="absolute left-[20%] bottom-[-30%] w-[800px] h-[800px] rounded-full bg-gradient-to-tr from-purple-900/20 via-blue-900/10 to-transparent blur-3xl"></div>
+                    <!-- Grid perspective line effect -->
+                    <div class="absolute inset-0 bg-[linear-gradient(to_right,#1e293b15_1px,transparent_1px),linear-gradient(to_bottom,#1e293b15_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)]"></div>
+                </div>
+
+                <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <div class="lg:col-span-8">
+                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-medium uppercase tracking-widest mb-6">
+                            <span class="w-2 h-2 rounded-full bg-blue-400 animate-ping"></span>
+                            Creative Marketing Agency
+                        </div>
+
+                        <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold heading-font tracking-tight leading-[0.95] mb-6">
+                            NO MONEY <br>
+                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-200 to-white">WASTED.</span>
+                        </h1>
+
+                        <p class="text-xl md:text-2xl font-light text-blue-200/90 max-w-2xl mb-4 leading-snug">
+                            WE TURN ATTENTION INTO GROWTH.
+                        </p>
+
+                        <p class="text-sm md:text-base text-slate-400 max-w-xl mb-10 leading-relaxed font-light">
+                            A creative marketing agency building brands, campaigns and digital experiences that people actually remember.
+                        </p>
+
+                        <div class="flex flex-wrap gap-4 items-center">
+                            <a href="#contact" class="px-8 py-4 rounded-full bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm tracking-wider uppercase transition-all duration-300 shadow-lg shadow-blue-600/30 flex items-center gap-3">
+                                START A PROJECT
+                                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </a>
+                            <a href="#projects" class="px-8 py-4 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white font-semibold text-sm tracking-wider uppercase transition-all duration-300 backdrop-blur-md">
+                                VIEW OUR WORK
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right Column UI Glassmorphism Cards like reference -->
+                    <div class="lg:col-span-4 flex flex-col gap-4 justify-center">
+                        <div class="p-6 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-xl transition-all duration-300 hover:border-blue-500/40">
+                            <div class="text-3xl md:text-4xl font-bold heading-font text-blue-400 mb-1">150+</div>
+                            <div class="text-xs text-slate-400 uppercase tracking-widest">Projects launched globally</div>
+                        </div>
+
+                        <div class="p-6 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-xl transition-all duration-300 hover:border-blue-500/40">
+                            <div class="text-3xl md:text-4xl font-bold heading-font text-indigo-300 mb-1">32M+</div>
+                            <div class="text-xs text-slate-400 uppercase tracking-widest">Total brand reach generated</div>
+                        </div>
+
+                        <div class="p-6 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-xl transition-all duration-300 hover:border-blue-500/40">
+                            <div class="text-3xl md:text-4xl font-bold heading-font text-purple-400 mb-1">94%</div>
+                            <div class="text-xs text-slate-400 uppercase tracking-widest">Long-term client retention rate</div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <section id="about" class="py-24 px-4 sm:px-6 z-10 relative">
+        <div class="max-w-7xl mx-auto">
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+                
+                <div class="lg:col-span-5">
+                    <span class="text-xs uppercase tracking-[0.2em] text-blue-400 font-semibold block mb-4">ABOUT US</span>
+                    <h2 class="text-4xl sm:text-5xl md:text-6xl font-bold heading-font tracking-tight leading-[1.05]">
+                        WE DON’T SELL <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-300">MARKETING.</span><br><br>
+                        WE BUILD <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-300">ATTENTION.</span>
+                    </h2>
+                </div>
+
+                <div class="lg:col-span-7 flex flex-col justify-between h-full">
+                    <p class="text-lg md:text-xl text-slate-300 font-light leading-relaxed mb-12">
+                        <strong class="text-white font-medium">NO MONEY WASTED</strong> is a creative marketing agency focused on strategy, content, branding and performance. We combine bold ideas, data and design to turn brands into something people notice, remember and choose.
+                    </p>
+
+                    <!-- Stats grid -->
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-8 border-t border-white/10">
+                        <div>
+                            <div class="text-3xl md:text-4xl font-bold heading-font text-white mb-1">5+</div>
+                            <div class="text-xs text-slate-400 uppercase tracking-wider">Years experience</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl md:text-4xl font-bold heading-font text-blue-400 mb-1">150+</div>
+                            <div class="text-xs text-slate-400 uppercase tracking-wider">Projects done</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl md:text-4xl font-bold heading-font text-indigo-400 mb-1">50+</div>
+                            <div class="text-xs text-slate-400 uppercase tracking-wider">Active brands</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl md:text-4xl font-bold heading-font text-purple-400 mb-1">32M+</div>
+                            <div class="text-xs text-slate-400 uppercase tracking-wider">Total reach</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <section id="services" class="py-24 px-4 sm:px-6 z-10 relative bg-gradient-to-b from-transparent via-cosmic-900/50 to-transparent">
+        <div class="max-w-7xl mx-auto">
+            
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
+                <div>
+                    <span class="text-xs uppercase tracking-[0.2em] text-blue-400 font-semibold block mb-3">OUR CAPABILITIES</span>
+                    <h2 class="text-4xl md:text-5xl font-bold heading-font tracking-tight">
+                        ENGINEERED FOR <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-300">IMPACT.</span>
+                    </h2>
+                </div>
+                <p class="text-sm text-slate-400 max-w-md mt-4 md:mt-0 font-light">
+                    Every service we provide is built to eradicate empty noise and focus exclusively on conversion and memory.
+                </p>
+            </div>
+
+            <!-- 6 Premium Services Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Service 01 -->
+                <div class="group p-8 rounded-3xl bg-cosmic-900/60 border border-white/10 transition-all duration-500 hover:-translate-y-2 card-glow relative overflow-hidden flex flex-col justify-between">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full blur-2xl group-hover:bg-blue-500/20 transition-all duration-500"></div>
+                    <div>
+                        <div class="text-blue-400 font-mono text-sm font-semibold mb-6">01</div>
+                        <h3 class="text-2xl font-bold heading-font mb-4 text-white group-hover:text-blue-300 transition-colors">BRANDING</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed font-light">
+                            Strategy, identity and visual systems that make brands recognizable across every digital and physical touchpoint.
+                        </p>
+                    </div>
+                    <div class="pt-8 flex items-center gap-2 text-xs uppercase tracking-widest text-slate-400 group-hover:text-white transition-colors">
+                        <span>Explore discipline</span>
+                        <i data-lucide="arrow-up-right" class="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></i>
+                    </div>
+                </div>
+
+                <!-- Service 02 -->
+                <div class="group p-8 rounded-3xl bg-cosmic-900/60 border border-white/10 transition-all duration-500 hover:-translate-y-2 card-glow relative overflow-hidden flex flex-col justify-between">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-indigo-500/5 rounded-full blur-2xl group-hover:bg-indigo-500/20 transition-all duration-500"></div>
+                    <div>
+                        <div class="text-indigo-400 font-mono text-sm font-semibold mb-6">02</div>
+                        <h3 class="text-2xl font-bold heading-font mb-4 text-white group-hover:text-indigo-300 transition-colors">SOCIAL MEDIA</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed font-light">
+                            Content strategies and viral frameworks designed to grow attention, engagement, and community loyalty.
+                        </p>
+                    </div>
+                    <div class="pt-8 flex items-center gap-2 text-xs uppercase tracking-widest text-slate-400 group-hover:text-white transition-colors">
+                        <span>Explore discipline</span>
+                        <i data-lucide="arrow-up-right" class="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></i>
+                    </div>
+                </div>
+
+                <!-- Service 03 -->
+                <div class="group p-8 rounded-3xl bg-cosmic-900/60 border border-white/10 transition-all duration-500 hover:-translate-y-2 card-glow relative overflow-hidden flex flex-col justify-between">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full blur-2xl group-hover:bg-blue-500/20 transition-all duration-500"></div>
+                    <div>
+                        <div class="text-blue-400 font-mono text-sm font-semibold mb-6">03</div>
+                        <h3 class="text-2xl font-bold heading-font mb-4 text-white group-hover:text-blue-300 transition-colors">PERFORMANCE</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed font-light">
+                            Targeted ad campaigns built around measurable ROI, lower acquisition costs, and explosive scale.
+                        </p>
+                    </div>
+                    <div class="pt-8 flex items-center gap-2 text-xs uppercase tracking-widest text-slate-400 group-hover:text-white transition-colors">
+                        <span>Explore discipline</span>
+                        <i data-lucide="arrow-up-right" class="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></i>
+                    </div>
+                </div>
+
+                <!-- Service 04 -->
+                <div class="group p-8 rounded-3xl bg-cosmic-900/60 border border-white/10 transition-all duration-500 hover:-translate-y-2 card-glow relative overflow-hidden flex flex-col justify-between">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-purple-500/5 rounded-full blur-2xl group-hover:bg-purple-500/20 transition-all duration-500"></div>
+                    <div>
+                        <div class="text-purple-400 font-mono text-sm font-semibold mb-6">04</div>
+                        <h3 class="text-2xl font-bold heading-font mb-4 text-white group-hover:text-purple-300 transition-colors">CONTENT PRODUCTION</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed font-light">
+                            Creative concepts, high-end video production, 3D design, and narrative storytelling that stops the scroll.
+                        </p>
+                    </div>
+                    <div class="pt-8 flex items-center gap-2 text-xs uppercase tracking-widest text-slate-400 group-hover:text-white transition-colors">
+                        <span>Explore discipline</span>
+                        <i data-lucide="arrow-up-right" class="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></i>
+                    </div>
+                </div>
+
+                <!-- Service 05 -->
+                <div class="group p-8 rounded-3xl bg-cosmic-900/60 border border-white/10 transition-all duration-500 hover:-translate-y-2 card-glow relative overflow-hidden flex flex-col justify-between">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full blur-2xl group-hover:bg-blue-500/20 transition-all duration-500"></div>
+                    <div>
+                        <div class="text-blue-400 font-mono text-sm font-semibold mb-6">05</div>
+                        <h3 class="text-2xl font-bold heading-font mb-4 text-white group-hover:text-blue-300 transition-colors">INFLUENCER MARKETING</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed font-light">
+                            Top-tier creators, strategic collaborations, and authentic campaigns that convert audiences into buyers.
+                        </p>
+                    </div>
+                    <div class="pt-8 flex items-center gap-2 text-xs uppercase tracking-widest text-slate-400 group-hover:text-white transition-colors">
+                        <span>Explore discipline</span>
+                        <i data-lucide="arrow-up-right" class="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></i>
+                    </div>
+                </div>
+
+                <!-- Service 06 -->
+                <div class="group p-8 rounded-3xl bg-cosmic-900/60 border border-white/10 transition-all duration-500 hover:-translate-y-2 card-glow relative overflow-hidden flex flex-col justify-between">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-indigo-500/5 rounded-full blur-2xl group-hover:bg-indigo-500/20 transition-all duration-500"></div>
+                    <div>
+                        <div class="text-indigo-400 font-mono text-sm font-semibold mb-6">06</div>
+                        <h3 class="text-2xl font-bold heading-font mb-4 text-white group-hover:text-indigo-300 transition-colors">WEB & DIGITAL</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed font-light">
+                            Immersive digital experiences engineered around attention retention, sleek aesthetics, and maximum conversion.
+                        </p>
+                    </div>
+                    <div class="pt-8 flex items-center gap-2 text-xs uppercase tracking-widest text-slate-400 group-hover:text-white transition-colors">
+                        <span>Explore discipline</span>
+                        <i data-lucide="arrow-up-right" class="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></i>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <section class="py-16 px-4 sm:px-6 z-10 relative">
+        <div class="max-w-7xl mx-auto">
+            
+            <div class="relative rounded-3xl overflow-hidden border border-white/10 bg-cosmic-900/90 p-8 md:p-16 cosmic-glow group">
+                <!-- Cosmic visual background banner -->
+                <div class="absolute inset-0 z-0 opacity-40 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style="background-image: url('https://placehold.co/1600x900/070a17/3b82f6?text=NO+MONEY+WASTED+FEATURED+PROJECT');"></div>
+                <div class="absolute inset-0 bg-gradient-to-r from-cosmic-950 via-cosmic-950/80 to-transparent z-0"></div>
+
+                <div class="relative z-10 max-w-2xl py-12">
+                    <span class="text-xs uppercase tracking-[0.2em] text-blue-400 font-semibold block mb-4">FEATURED CAMPAIGN</span>
+                    <h2 class="text-4xl sm:text-5xl md:text-6xl font-bold heading-font tracking-tight leading-tight mb-8">
+                        WE CREATE <br>
+                        BRANDS THAT <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-300">DON’T GET IGNORED.</span>
+                    </h2>
+
+                    <div class="flex flex-wrap gap-4 items-center">
+                        <a href="#contact" class="px-8 py-4 rounded-full bg-white text-cosmic-950 hover:bg-blue-500 hover:text-white font-semibold text-sm uppercase tracking-wider transition-all duration-300 flex items-center gap-3">
+                            VIEW CASE
+                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+
+                        <button class="w-14 h-14 rounded-full bg-blue-600/20 border border-blue-500/40 backdrop-blur-md flex items-center justify-center text-white hover:bg-blue-600 transition-all duration-300">
+                            <i data-lucide="play" class="w-5 h-5 ml-0.5 fill-current"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="projects" class="py-24 px-4 sm:px-6 z-10 relative">
+        <div class="max-w-7xl mx-auto">
+            
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
+                <div>
+                    <span class="text-xs uppercase tracking-[0.2em] text-blue-400 font-semibold block mb-3">SELECTED WORKS</span>
+                    <h2 class="text-4xl md:text-5xl font-bold heading-font tracking-tight">
+                        PROOF OVER <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">PROMISES.</span>
+                    </h2>
+                </div>
+                <p class="text-sm text-slate-400 max-w-sm mt-4 md:mt-0 font-light">
+                    A curated archive of high-end digital experiences, rebrandings, and high-conversion social campaigns.
+                </p>
+            </div>
+
+            <!-- Editorial Projects Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                
+                <!-- Project 1 -->
+                <div class="group cursor-pointer">
+                    <div class="relative rounded-3xl overflow-hidden border border-white/10 aspect-[16/11] bg-cosmic-900 mb-6 card-glow">
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105 opacity-80" style="background-image: url('https://placehold.co/1000x700/0a0f25/3b82f6?text=NEBULA+BRAND+IDENTITY');"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-cosmic-950 via-transparent to-transparent opacity-60"></div>
+                        <div class="absolute top-6 right-6 px-4 py-1.5 rounded-full bg-cosmic-950/80 backdrop-blur-md border border-white/10 text-xs font-mono uppercase text-blue-300">
+                            BRAND IDENTITY
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="text-2xl font-bold heading-font group-hover:text-blue-400 transition-colors">NEBULA</h3>
+                            <p class="text-slate-400 text-sm font-light mt-1">Complete global rebrand & visual ecosystem</p>
+                        </div>
+                        <span class="text-xs text-blue-400 font-mono uppercase tracking-widest pt-2">2026</span>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="group cursor-pointer">
+                    <div class="relative rounded-3xl overflow-hidden border border-white/10 aspect-[16/11] bg-cosmic-900 mb-6 card-glow">
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105 opacity-80" style="background-image: url('https://placehold.co/1000x700/0a0f25/8b5cf6?text=ORBIT+SOCIAL+CAMPAIGN');"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-cosmic-950 via-transparent to-transparent opacity-60"></div>
+                        <div class="absolute top-6 right-6 px-4 py-1.5 rounded-full bg-cosmic-950/80 backdrop-blur-md border border-white/10 text-xs font-mono uppercase text-purple-300">
+                            SOCIAL CAMPAIGN
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="text-2xl font-bold heading-font group-hover:text-purple-400 transition-colors">ORBIT</h3>
+                            <p class="text-slate-400 text-sm font-light mt-1">Viral creator partnership & community takeover</p>
+                        </div>
+                        <span class="text-xs text-purple-400 font-mono uppercase tracking-widest pt-2">2026</span>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="group cursor-pointer">
+                    <div class="relative rounded-3xl overflow-hidden border border-white/10 aspect-[16/11] bg-cosmic-900 mb-6 card-glow">
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105 opacity-80" style="background-image: url('https://placehold.co/1000x700/0a0f25/2563eb?text=ZERO+GRAVITY+PERFORMANCE');"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-cosmic-950 via-transparent to-transparent opacity-60"></div>
+                        <div class="absolute top-6 right-6 px-4 py-1.5 rounded-full bg-cosmic-950/80 backdrop-blur-md border border-white/10 text-xs font-mono uppercase text-blue-300">
+                            PERFORMANCE MARKETING
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="text-2xl font-bold heading-font group-hover:text-blue-400 transition-colors">ZERO GRAVITY</h3>
+                            <p class="text-slate-400 text-sm font-light mt-1">High-ROI acquisition funnels & creative testing</p>
+                        </div>
+                        <span class="text-xs text-blue-400 font-mono uppercase tracking-widest pt-2">2025</span>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="group cursor-pointer">
+                    <div class="relative rounded-3xl overflow-hidden border border-white/10 aspect-[16/11] bg-cosmic-900 mb-6 card-glow">
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105 opacity-80" style="background-image: url('https://placehold.co/1000x700/0a0f25/4f46e5?text=ECLIPSE+DIGITAL+EXPERIENCE');"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-cosmic-950 via-transparent to-transparent opacity-60"></div>
+                        <div class="absolute top-6 right-6 px-4 py-1.5 rounded-full bg-cosmic-950/80 backdrop-blur-md border border-white/10 text-xs font-mono uppercase text-indigo-300">
+                            DIGITAL EXPERIENCE
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="text-2xl font-bold heading-font group-hover:text-indigo-400 transition-colors">ECLIPSE</h3>
+                            <p class="text-slate-400 text-sm font-light mt-1">Immersive Web3 interface & conversion portal</p>
+                        </div>
+                        <span class="text-xs text-indigo-400 font-mono uppercase tracking-widest pt-2">2025</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <section class="py-28 px-4 sm:px-6 z-10 relative bg-gradient-to-b from-transparent via-cosmic-900/60 to-transparent">
+        <div class="max-w-7xl mx-auto text-center">
+            
+            <span class="text-xs uppercase tracking-[0.25em] text-blue-400 font-semibold block mb-6">OUR PHILOSOPHY</span>
+            
+            <h2 class="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold heading-font tracking-tight leading-[1.05] mb-10">
+                NO BORING ADS.<br>
+                NO EMPTY PROMISES.<br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-200 to-white">NO MONEY WASTED.</span>
+            </h2>
+
+            <p class="text-lg md:text-xl text-slate-400 font-light max-w-xl mx-auto mb-16">
+                Just strategy, creativity and measurable results.
+            </p>
+
+            <!-- Brand Block Sub-Banner -->
+            <div class="p-10 md:p-14 rounded-3xl bg-white/[0.02] border border-white/10 backdrop-blur-xl max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+                <div>
+                    <div class="text-lg font-bold heading-font text-white mb-2">NO MONEY WASTED.</div>
+                    <p class="text-xs text-slate-400">Capital deployed strictly where impact happens.</p>
+                </div>
+                <div>
+                    <div class="text-lg font-bold heading-font text-blue-400 mb-2">NO ATTENTION WASTED.</div>
+                    <p class="text-xs text-slate-400">Capturing minds that convert into loyal advocates.</p>
+                </div>
+                <div>
+                    <div class="text-lg font-bold heading-font text-purple-400 mb-2">NO IDEAS WASTED.</div>
+                    <p class="text-xs text-slate-400">Every concept rigorously tested for commercial scale.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="team" class="py-24 px-4 sm:px-6 z-10 relative">
+        <div class="max-w-7xl mx-auto">
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-6">
+                    <span class="text-xs uppercase tracking-[0.2em] text-blue-400 font-semibold block mb-4">LEADERSHIP</span>
+                    <h2 class="text-4xl sm:text-5xl font-bold heading-font tracking-tight leading-tight mb-6">
+                        BUILT TO MAKE<br>
+                        BRANDS IMPOSSIBLE<br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-300">TO IGNORE.</span>
+                    </h2>
+                    <p class="text-slate-400 font-light text-base leading-relaxed mb-8">
+                        We operate at the intersection of rigorous data analytics and high-end creative direction. No bureaucracy, no fluff—just direct access to senior talent dedicated to your growth.
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-blue-600/20 border border-blue-500/40 flex items-center justify-center text-blue-400 font-bold heading-font">
+                            AR
+                        </div>
+                        <div>
+                            <div class="font-bold heading-font text-lg text-white">CEO — ARMAN</div>
+                            <div class="text-xs text-slate-400 uppercase tracking-widest font-mono">Founder & CEO of NO MONEY WASTED</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-6">
+                    <div class="relative rounded-3xl overflow-hidden border border-white/10 aspect-[4/3] bg-cosmic-900 card-glow">
+                        <div class="absolute inset-0 bg-cover bg-center opacity-80" style="background-image: url('https://placehold.co/900x700/070a17/3b82f6?text=ARMAN+-+CEO');"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-cosmic-950 via-transparent to-transparent"></div>
+                        <div class="absolute bottom-6 left-6 right-6 p-6 rounded-2xl bg-cosmic-950/80 backdrop-blur-md border border-white/10 flex justify-between items-center">
+                            <div>
+                                <div class="text-sm font-bold text-white">Arman</div>
+                                <div class="text-xs text-slate-400">Chief Executive Officer</div>
+                            </div>
+                            <div class="text-xs font-mono text-blue-400 uppercase tracking-widest">EST. 2021</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <section id="contact" class="py-24 px-4 sm:px-6 z-10 relative">
+        <div class="max-w-7xl mx-auto">
+            
+            <div class="relative rounded-3xl overflow-hidden border border-white/20 bg-gradient-to-b from-cosmic-900 to-cosmic-950 p-10 md:p-20 text-center cosmic-glow">
+                
+                <div class="absolute inset-0 z-0 opacity-20">
+                    <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-blue-500/30 blur-[120px]"></div>
+                </div>
+
+                <div class="relative z-10 max-w-2xl mx-auto">
+                    <span class="text-xs uppercase tracking-[0.25em] text-blue-400 font-semibold block mb-4">INITIATE CONTACT</span>
+                    
+                    <h2 class="text-5xl md:text-7xl font-bold heading-font tracking-tight mb-6">
+                        READY<br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-200 to-white">TO LAUNCH?</span>
+                    </h2>
+
+                    <p class="text-base md:text-lg text-slate-300 font-light mb-10 leading-relaxed">
+                        Tell us what you’re building. We’ll figure out how to make people care.
+                    </p>
+
+                    <!-- Contact Form Mock -->
+                    <form id="contact-form" class="space-y-4 mb-8 text-left max-w-md mx-auto" onsubmit="event.preventDefault(); showNotification();">
+                        <div>
+                            <input type="text" required placeholder="Your Name" class="w-full px-6 py-4 rounded-2xl bg-white/5 border border-white/10 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-blue-500 transition-colors">
+                        </div>
+                        <div>
+                            <input type="email" required placeholder="Work Email" class="w-full px-6 py-4 rounded-2xl bg-white/5 border border-white/10 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-blue-500 transition-colors">
+                        </div>
+                        <div>
+                            <textarea rows="4" required placeholder="Tell us about your project or goals..." class="w-full px-6 py-4 rounded-2xl bg-white/5 border border-white/10 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-blue-500 transition-colors resize-none"></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-4 rounded-2xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm uppercase tracking-wider transition-all duration-300 shadow-lg shadow-blue-600/30">
+                            START A PROJECT
+                        </button>
+                    </form>
+
+                    <div id="form-notification" class="hidden p-4 rounded-xl bg-blue-500/10 border border-blue-500/30 text-blue-300 text-sm font-medium">
+                        Transmission received. Arman and the team will review your project and get back to you shortly.
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="border-t border-white/10 pt-20 pb-12 px-4 sm:px-6 z-10 relative bg-cosmic-950">
+        <div class="max-w-7xl mx-auto">
+            
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-white/10">
+                
+                <div class="md:col-span-5">
+                    <div class="text-3xl font-extrabold heading-font tracking-tight mb-4">
+                        NO MONEY WASTED<span class="text-blue-500">®</span>
+                    </div>
+                    <p class="text-slate-400 text-sm font-light max-w-sm mb-6">
+                        Marketing. Creative. Strategy. Transforming brand attention into uncompromised market dominance.
+                    </p>
+                    <div class="text-xs font-mono text-slate-400 uppercase tracking-widest">
+                        CEO — ARMAN
+                    </div>
+                </div>
+
+                <div class="md:col-span-3">
+                    <h4 class="text-xs font-semibold uppercase tracking-[0.2em] text-blue-400 mb-6">DISCIPLINES</h4>
+                    <ul class="space-y-3 text-sm text-slate-300 font-light">
+                        <li><a href="#services" class="hover:text-white transition-colors">Brand Identity</a></li>
+                        <li><a href="#services" class="hover:text-white transition-colors">Social Media & Growth</a></li>
+                        <li><a href="#services" class="hover:text-white transition-colors">Performance Marketing</a></li>
+                        <li><a href="#services" class="hover:text-white transition-colors">Content Production</a></li>
+                        <li><a href="#services" class="hover:text-white transition-colors">Web & Digital Experiences</a></li>
+                    </ul>
+                </div>
+
+                <div class="md:col-span-4">
+                    <h4 class="text-xs font-semibold uppercase tracking-[0.2em] text-blue-400 mb-6">CONNECT</h4>
+                    <ul class="space-y-3 text-sm text-slate-300 font-light">
+                        <li><a href="https://instagram.com" target="_blank" class="hover:text-white transition-colors flex items-center gap-2">Instagram <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-slate-500"></i></a></li>
+                        <li><a href="https://telegram.org" target="_blank" class="hover:text-white transition-colors flex items-center gap-2">Telegram <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-slate-500"></i></a></li>
+                        <li><a href="mailto:contact@nomoneywasted.agency" class="hover:text-white transition-colors flex items-center gap-2">Email <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-slate-500"></i></a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-400 font-light">
+                <div>© 2026 NO MONEY WASTED. ALL RIGHTS RESERVED.</div>
+                <div class="mt-4 sm:mt-0 flex gap-6">
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Mobile Menu Functionality
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenuClose = document.getElementById('mobile-menu-close');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        function toggleMobileMenu() {
+            if (mobileMenu.classList.contains('opacity-0')) {
+                mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
+                mobileMenu.classList.add('opacity-100', 'pointer-events-auto');
+            } else {
+                mobileMenu.classList.remove('opacity-100', 'pointer-events-auto');
+                mobileMenu.classList.add('opacity-0', 'pointer-events-none');
+            }
+        }
+
+        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+        mobileMenuClose.addEventListener('click', toggleMobileMenu);
+        mobileLinks.forEach(link => link.addEventListener('click', toggleMobileMenu));
+
+        // Form Submission Notification
+        function showNotification() {
+            const form = document.getElementById('contact-form');
+            const notification = document.getElementById('form-notification');
+            form.reset();
+            notification.classList.remove('hidden');
+            setTimeout(() => {
+                notification.classList.add('hidden');
+            }, 6000);
+        }
+    </script>
+</body>
+</html>
